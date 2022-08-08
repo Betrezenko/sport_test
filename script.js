@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const API_URL = 'https://api-football-standings.azharimm.site/leagues'
+const API_URL = 'https://api-football-standings.azharimm.site/leagues';
 
 async function first() {
     const leagueIds = ['eng.1', 'ger.1', 'esp.1', 'fra.1'];
@@ -20,13 +20,13 @@ async function first() {
         const forAvg = (getFromStats("pointsFor").value / getFromStats("gamesPlayed").value).toPrecision(2);
         const againstAvg = (getFromStats("pointsAgainst").value / getFromStats("gamesPlayed").value).toPrecision(2);
 
-        return { name, forAvg, againstAvg };
+        return {name, forAvg, againstAvg};
     });
 
     console.log(result);
 }
 
-first()
+first();
 
 async function second() {
     const response = await fetch(`${API_URL}/rus.1/standings?season=2021&sort=asc`);
@@ -42,7 +42,7 @@ async function second() {
             position: getFromStats('rank').value,
             // среднее пропущенных и забитых!!!
             goals: getFromStats('pointsFor').value
-        }
+        };
     });
 
     console.log(transformed);
